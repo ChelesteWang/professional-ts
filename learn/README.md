@@ -8,7 +8,7 @@ type StateType<T> = T | undefined;
 const [teams, setTeams] = useState<StateType<ITeam[]>>();
 ```
 
-定义 useAsyncDataEffect
+## 定义 useAsyncDataEffect
 
 ```ts
 export function useAsyncDataEffect<T>(
@@ -47,5 +47,17 @@ export function useAsyncDataEffect<T>(
       cancelled = true;
     };
   }, [...(options.otherStatesToMonitor || []), stateName]);
+}
+```
+
+## 请求 API
+
+## Pick 函数
+
+从复杂类型中提取部分属性
+
+```ts
+export interface IFooter {
+  channel: Pick<IChannel, 'name'>;
 }
 ```
