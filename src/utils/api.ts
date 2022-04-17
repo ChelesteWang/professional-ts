@@ -12,14 +12,18 @@ import Deferred from './deferred';
   }} options 
   @return {void}
  */
-export function useAsyncDataEffect<T>(getData: () => Promise<T>, options: {
+export function useAsyncDataEffect<T>(
+  getData: () => Promise<T>,
+  options: {
     stateName: string;
     otherStatesToMonitor?: unknown[];
     setter: (arg: T) => void;
-  }): void {
+  },
+): void {
   let cancelled = false;
   const { setter, stateName } = options;
   useEffect(() => {
+    // Deferred 用于确保 promise 只被解析一次
     const d = new Deferred<T>();
 
     getData()

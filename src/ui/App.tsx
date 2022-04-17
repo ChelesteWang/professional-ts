@@ -13,13 +13,18 @@ import TeamSelector from './components/TeamSelector';
 
 const { useState } = React;
 
+type StateType<T> = T | undefined;
+
 const App = (): JSX.Element => {
-  const [teams, setTeams] = useState<ITeam[] | undefined>();
+  
+  // 代替 useState<ITeam[] | undefined>()
+  const [teams, setTeams] = useState<StateType<ITeam[]>>();
 
   useAsyncDataEffect(() => getAllTeams(), {
     setter: setTeams,
     stateName: 'teams',
   });
+
   if (!teams) return <Loading message="Loading teams" />;
   return (
     <Router>

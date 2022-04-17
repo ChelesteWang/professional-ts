@@ -2,11 +2,14 @@ import { stringifyError } from './error';
 import HTTPError from './http-error';
 
 /**
- *
+ * API 请求
  * @param input - awkdlha
  * @param init - adlkjhwlkadhaw
  */
-async function getJSON(input: RequestInfo, init?: RequestInit): Promise<{
+async function getJSON(
+  input: RequestInfo,
+  init?: RequestInit,
+): Promise<{
   response: Response;
   json: unknown;
 }> {
@@ -31,7 +34,10 @@ async function getJSON(input: RequestInfo, init?: RequestInit): Promise<{
  * @param path
  * @param init
  */
-export async function apiCall(path: string, init?: RequestInit): Promise<unknown> {
+export async function apiCall(
+  path: string,
+  init?: RequestInit,
+): Promise<unknown> {
   let response;
   let json;
   try {
